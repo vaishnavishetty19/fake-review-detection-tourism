@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Review Predictor</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.79);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <body background="static\img\bg.jpg" style="background-size: 100%;"></body>
+    <div class="container">
+        <h2>Fake Review Predictor</h2>
+        <textarea id="review" placeholder="Enter your review here..."></textarea>
+        <button onclick="submitReview()">Submit</button>
+        <div class="result" id="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        async function submitReview() {
+            const reviewText = document.getElementById('review').value;
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ reviews: [reviewText] }) // Sending as an array
+            });
+
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');
+            if (response.ok) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerText = `Prediction: ${result.predictions[0]}`;
+                document.getElementById('review').value = ''; // Clear input
+            } else {
+                resultDiv.style.display = 'block';
+                resultDiv.innerText = `Error: ${result.error}`;
+            }
+        }
+    </script>
+</body>
+</html>
