@@ -16,19 +16,6 @@ Class Imbalance Handling → SMOTE oversampling for fair training.
 
 Deployment → Flask app for interactive review prediction.
 
-📂 Project Structure
-fake-review-detection-tourism/
-├─ app/                 # Flask app
-├─ src/                 # Training, inference, preprocessing code
-├─ data/                # Raw & processed data (not committed)
-├─ models/              # Saved models (joblib)
-├─ notebooks/           # Jupyter experiments (optional)
-├─ tests/               # Smoke tests
-├─ requirements.txt
-├─ README.md
-├─ LICENSE
-└─ .gitignore
-
 🚀 Quickstart
 
 Clone repo
