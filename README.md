@@ -4,6 +4,8 @@ This project detects fake vs genuine tourism reviews using Natural Language Proc
 By analyzing review text, we extract linguistic patterns and train models (SVM, Logistic Regression, Naive Bayes) to classify whether a review is Truthful or Deceptive.
 A simple Flask web app is included to let users paste a review and instantly check its authenticity.
 
+![image](https://github.com/vaishnavishetty19/fake-review-detection-tourism/blob/781f49514ab992cd727497cc005457c8fec124a8/snapshot.PNG)
+
 ✨ Features
 
 Text Preprocessing → cleaning, tokenization, stopword removal, stemming.
